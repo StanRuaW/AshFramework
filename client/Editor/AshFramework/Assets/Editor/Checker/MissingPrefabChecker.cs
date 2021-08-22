@@ -41,7 +41,7 @@ namespace Asset
                     var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
                     EditorUtility.DisplayProgressBar("玩命检查中", "玩命检查中..." + path, (float)index / length);
                     bool missing = FindMissingPrefabRecursive(prefab, prefab.name, true);
-                    hasMissing = missing ? hasMissing : true;
+                    hasMissing = missing ? true : hasMissing;
                 }
                 EditorUtility.ClearProgressBar();
 
@@ -65,7 +65,7 @@ namespace Asset
                 {
                     Debug.LogError(
                         $"<color={PrefabNameColor}>{prefabName}</color> has missing prefab <color={SubPrefabNameColor}>{gameObject.name}</color>");
-                    return true;
+                    return true; 
                 }
 
                 if (PrefabUtility.IsPrefabAssetMissing(gameObject))
@@ -100,7 +100,7 @@ namespace Asset
                 foreach (Transform childT in gameObject.transform)
                 {
                     bool missing = FindMissingPrefabRecursive(childT.gameObject, prefabName, false);
-                    hasMissing = missing ? false : hasMissing;
+                    hasMissing = missing ? true : hasMissing;
                 }
                 return hasMissing;
             }

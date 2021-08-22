@@ -42,7 +42,7 @@ namespace Asset
                     var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
                     bool missing = FindMissingComponentRecursive(prefab, prefab, path);
                     index++;
-                    hasMissing = missing ? false : hasMissing;
+                    hasMissing = missing ? true : hasMissing;
                 }
                 EditorUtility.ClearProgressBar();
 
@@ -77,7 +77,7 @@ namespace Asset
                 foreach (Transform trans in gameObject.transform)
                 {
                     bool missing = FindMissingComponentRecursive(trans.gameObject, prefab, path);
-                    hasMissing = missing ? false : hasMissing;
+                    hasMissing = missing ? true : hasMissing;
                 }
                 return hasMissing;
             }
