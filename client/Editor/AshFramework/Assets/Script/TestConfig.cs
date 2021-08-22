@@ -11,6 +11,11 @@ public class TestConfig : MonoBehaviour
     new Bright.Serialization.ByteBuf(
         System.IO.File.ReadAllBytes("./Assets/Config/output_data" + "/" + file)));//TODO:Â·¾¶¹ÜÀí
 
+        tables.TbFullTypes.ForeachCfg((cfg.test.DemoType2 cfg) =>
+        {
+            Debug.Log(cfg.X6);
+            return true;
+        });
     }
 
     // Update is called once per frame

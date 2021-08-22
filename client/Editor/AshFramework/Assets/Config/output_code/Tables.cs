@@ -27,21 +27,21 @@ public sealed class Tables
     public Tables(System.Func<string, ByteBuf> loader)
     {
         var tables = new System.Collections.Generic.Dictionary<string, object>();
-        TbFullTypes = new test.TbFullTypes(loader("test.TbFullTypes")); 
+        TbFullTypes = new test.TbFullTypes(loader("test.TbFullTypes.bin")); 
         tables.Add("test.TbFullTypes", TbFullTypes);
-        TbSingleton = new test.TbSingleton(loader("test.TbSingleton")); 
+        TbSingleton = new test.TbSingleton(loader("test.TbSingleton.bin")); 
         tables.Add("test.TbSingleton", TbSingleton);
-        TbDataFromJson = new test.TbDataFromJson(loader("test.TbDataFromJson")); 
+        TbDataFromJson = new test.TbDataFromJson(loader("test.TbDataFromJson.bin")); 
         tables.Add("test.TbDataFromJson", TbDataFromJson);
-        TbDataFromXml = new test.TbDataFromXml(loader("test.TbDataFromXml")); 
+        TbDataFromXml = new test.TbDataFromXml(loader("test.TbDataFromXml.bin")); 
         tables.Add("test.TbDataFromXml", TbDataFromXml);
-        TbDataFromLua = new test.TbDataFromLua(loader("test.TbDataFromLua")); 
+        TbDataFromLua = new test.TbDataFromLua(loader("test.TbDataFromLua.bin")); 
         tables.Add("test.TbDataFromLua", TbDataFromLua);
-        TbMultiRowRecord = new test.TbMultiRowRecord(loader("test.TbMultiRowRecord")); 
+        TbMultiRowRecord = new test.TbMultiRowRecord(loader("test.TbMultiRowRecord.bin")); 
         tables.Add("test.TbMultiRowRecord", TbMultiRowRecord);
-        TbTestNull = new test.TbTestNull(loader("test.TbTestNull")); 
+        TbTestNull = new test.TbTestNull(loader("test.TbTestNull.bin")); 
         tables.Add("test.TbTestNull", TbTestNull);
-        TbTestTag = new test.TbTestTag(loader("test.TbTestTag")); 
+        TbTestTag = new test.TbTestTag(loader("test.TbTestTag.bin")); 
         tables.Add("test.TbTestTag", TbTestTag);
 
         TbFullTypes.Resolve(tables); 
