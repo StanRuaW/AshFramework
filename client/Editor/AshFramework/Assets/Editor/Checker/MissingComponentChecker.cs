@@ -12,14 +12,27 @@ namespace Asset
     {
         public class MissingComponentChecker
         {
-            private const string PATH = "Assets/Editor/Examples/Example_08_MissingComponentChecker/Prefabs";
             private const string PrefabNameColor = "#00FF00";
             private const string PathColor = "#0000FF";
 
-            [MenuItem("Tools/CheckMissingComponent", priority = 8)]
-            private static void MissingComponentCheck()
+            [MenuItem("Assets/CheckSelectMissingComponent", priority = 2001)]
+            private static void CheckMissingComponentSelectFolder()
             {
-                var guids = AssetDatabase.FindAssets("t:GameObject", new[] { PATH });
+                string[] paths = Util.PathUtil.GetCurrSelectFolderPaths();
+                if (paths == null)
+                {
+                    Debug.LogError("can't get select path when check prefab");
+                    return;
+                }
+
+                MissingComponentCheck(paths);
+            }
+
+
+            private static void MissingComponentCheck(string[] objPaths)
+            {
+                bool hasMissing = false;
+                var guids = AssetDatabase.FindAssets("t:GameObject", objPaths);
                 var length = guids.Length;
                 var index = 1;
                 foreach (var guid in guids)
@@ -27,15 +40,26 @@ namespace Asset
                     var path = AssetDatabase.GUIDToAssetPath(guid);
                     EditorUtility.DisplayProgressBar("玩命检查中", "玩命检查中..." + path, (float)index / length);
                     var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-                    FindMissingComponentRecursive(prefab, prefab, path);
+                    bool missing = FindMissingComponentRecursive(prefab, prefab, path);
                     index++;
+                    hasMissing = missing ? false : hasMissing;
                 }
-
                 EditorUtility.ClearProgressBar();
-                EditorUtility.DisplayDialog("提示", "检查结束", "OK");
+
+                if (hasMissing)
+                {
+                    Debug.LogError("Check has missing component");
+                }
+                else
+                {
+                    string msg = "Check no missing component:       ";
+                    foreach (var p in objPaths)
+                        msg += p + "        ";
+                    Debug.Log(msg);
+                }
             }
 
-            private static void FindMissingComponentRecursive(GameObject gameObject, GameObject prefab, string path)
+            private static bool FindMissingComponentRecursive(GameObject gameObject, GameObject prefab, string path)
             {
                 var cmps = gameObject.GetComponents<Component>();
                 for (int i = 0; i < cmps.Length; i++)
@@ -45,13 +69,17 @@ namespace Asset
                         Debug.LogError(
                             $"<color={PrefabNameColor}>{GetRelativePath(gameObject, prefab)}</color> has missing components! path is: <color={PathColor}>{path}</color>"
                         );
+                        return true;
                     }
                 }
 
+                bool hasMissing = false;
                 foreach (Transform trans in gameObject.transform)
                 {
-                    FindMissingComponentRecursive(trans.gameObject, prefab, path);
+                    bool missing = FindMissingComponentRecursive(trans.gameObject, prefab, path);
+                    hasMissing = missing ? false : hasMissing;
                 }
+                return hasMissing;
             }
 
             private static string GetRelativePath(GameObject gameObject, GameObject prefab)

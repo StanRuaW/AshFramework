@@ -13,11 +13,10 @@ namespace Asset
     {
         public class MissingPrefabChecker
         {
-            private const string PATH = "Assets/Editor/Examples/Example_07_MissingPrefabChecker/Prefabs";
             private const string PrefabNameColor = "#00FF00";
             private const string SubPrefabNameColor = "#FF0000";
 
-            [MenuItem("Tools/CheckMissingPrefab", priority = 7)]
+            [MenuItem("Assets/CheckSelectMissingPrefab", priority = 2000)]
             private static void CheckMissingPrefabSelectFolder()
             {
                 string[] paths = Util.PathUtil.GetCurrSelectFolderPaths();
@@ -30,7 +29,7 @@ namespace Asset
                 CheckMissingPrefab(paths);
             }
 
-            public static void CheckMissingPrefab(string[] objPaths)
+            private static void CheckMissingPrefab(string[] objPaths)
             {
                 bool hasMissing = false;
                 var guids = AssetDatabase.FindAssets("t:GameObject", objPaths);
@@ -41,8 +40,8 @@ namespace Asset
                     var path = AssetDatabase.GUIDToAssetPath(guid);
                     var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
                     EditorUtility.DisplayProgressBar("玩命检查中", "玩命检查中..." + path, (float)index / length);
-                    bool result = FindMissingPrefabRecursive(prefab, prefab.name, true);
-                    hasMissing = result ? hasMissing : false;
+                    bool missing = FindMissingPrefabRecursive(prefab, prefab.name, true);
+                    hasMissing = missing ? hasMissing : true;
                 }
                 EditorUtility.ClearProgressBar();
 
