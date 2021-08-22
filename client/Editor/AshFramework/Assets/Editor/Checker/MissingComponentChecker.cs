@@ -28,7 +28,6 @@ namespace Asset
                 MissingComponentCheck(paths);
             }
 
-
             private static void MissingComponentCheck(string[] objPaths)
             {
                 bool hasMissing = false;
