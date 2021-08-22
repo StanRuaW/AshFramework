@@ -1,17 +1,15 @@
 <root>
-
 	<topmodule name="cfg"/>
 
-	<branch name="cn"/>
-	<branch name="tw"/>
+	<group name="c" default="1"/> client 分组
+	<group name="s" default="1"/> server 分组
+	<group name="e" default="1"/> editor分组
+
+	<import name="."/>
+	
 	<branch name="en"/>
 	<branch name="jp"/>
-
-	<group name="c" default="1"/> client
-	<group name="s" default="1"/> server
-	<group name="e" default="1"/> editor
-	
-	<import name="."/>
+	<branch name="cn"/>
 
 	<service name="server" manager="Tables" group="s"/>
 	<service name="client" manager="Tables" group="c"/>
