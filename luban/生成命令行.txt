@@ -1,0 +1,13 @@
+>> -h 127.0.0.1
+>> -p 8899
+>> -j cfg
+>> --
+>> --define_file ../../../config/Defines/_root_.xml
+>> --input_data_dir ../../../config/Datas
+>> --output_code_dir ../../../output/code
+>> --output_data_dir ../../../output/bin
+>> --service server
+>> --export_test_data
+>> --gen_types "code_cs_bin,data_bin"
+
+Luban.Client.exe -h 127.0.0.1 -p 8899 -j cfg -- -d ../../../config/Defines/__root__.xml --input_data_dir ../../../config/Datas --output_code_dir ../../../output/code --output_data_dir ../../../output/bin --gen_types code_cs_bin,data_bin -s all --export_test_data
