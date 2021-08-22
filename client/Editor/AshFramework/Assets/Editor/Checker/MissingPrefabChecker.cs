@@ -22,7 +22,7 @@ namespace Asset
                 string[] paths = Util.PathUtil.GetCurrSelectFolderPaths();
                 if(paths == null)
                 {
-                    Debug.LogError("can't get select path when check prefab");
+                    Debug.LogWarning("can't get select path when check prefab");
                     return;
                 }
 
