@@ -1,9 +1,12 @@
-﻿using System;
+﻿//引用自
+//作者：马三小伙儿 bilibili id:87410250
+//地址：https://www.bilibili.com/video/BV1nh411U7iU
+using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 
-namespace ToolKits
+namespace Editor
 {
 // Disable it
 //[CustomPreview(typeof(GameObject))]

@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿//引用自
+//作者：马三小伙儿 bilibili id:87410250
+//地址：https://www.bilibili.com/video/BV1nh411U7iU
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEditor;
 
-namespace ToolKits
+namespace Editor
 {
     [CustomEditor(typeof(GameObject)), CanEditMultipleObjects]
     public class ParticleSystemGameObjectEditor : OverrideEditor

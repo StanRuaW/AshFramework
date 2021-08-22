@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace ToolKits
+namespace Editor
 {
 // thanks to Sprite Animation Preview
     public abstract class OverrideEditor : UnityEditor.Editor
