@@ -15,10 +15,16 @@ namespace Asset.Checker
         private const string SubPrefabNameColor = "#FF0000";
 
         [MenuItem("Tools/Checker/查找所有缺失预制体的引用")]
-        private static void CheckMissingComponentAll()
+        private static void CheckMissingPrefabAll()
         {
             string path = Asset.PathUtil.GetAssetsRootPath();
             CheckMissingPrefab(new[] { path });
+        }
+
+        [MenuItem("GameObject/Checker/查找所有缺失预制体的引用")]
+        private static void CheckMissingPrefabInScene()
+        {
+            Debug.Log("TODO");
         }
 
         [MenuItem("Assets/CheckSelectMissingPrefab", priority = 2000)]
@@ -62,53 +68,54 @@ namespace Asset.Checker
                     msg += p + "        ";
                 Debug.Log(msg);
             }
-        }
 
-        //TODO：本地方法
-        static bool FindMissingPrefabRecursive(GameObject gameObject, string prefabName, bool isRoot)
-        {
-            if (gameObject.name.Contains("Missing Prefab"))
+            static bool FindMissingPrefabRecursive(GameObject gameObject, string prefabName, bool isRoot)
             {
-                Debug.LogError(
-                    $"<color={PrefabNameColor}>{prefabName}</color> has missing prefab <color={SubPrefabNameColor}>{gameObject.name}</color>");
-                return true;
-            }
-
-            if (PrefabUtility.IsPrefabAssetMissing(gameObject))
-            {
-                Debug.LogError(
-                    $"<color={PrefabNameColor}>{prefabName}</color> has missing prefab <color={SubPrefabNameColor}>{gameObject.name}</color>");
-                return true;
-            }
-
-            if (PrefabUtility.IsDisconnectedFromPrefabAsset(gameObject))
-            {
-                Debug.LogError(
-                    $"<color={PrefabNameColor}>{prefabName}</color> has missing prefab <color={SubPrefabNameColor}>{gameObject.name}</color>");
-                return true;
-            }
-
-            if (!isRoot)
-            {
-                if (PrefabUtility.IsAnyPrefabInstanceRoot(gameObject))
+                if (gameObject.name.Contains("Missing Prefab"))
                 {
-                    return false;
+                    Debug.LogError(
+                        $"<color={PrefabNameColor}>{prefabName}</color> has missing prefab <color={SubPrefabNameColor}>{gameObject.name}</color>");
+                    return true;
                 }
 
-                GameObject root = PrefabUtility.GetNearestPrefabInstanceRoot(gameObject);
-                if (root == gameObject)
+                if (PrefabUtility.IsPrefabAssetMissing(gameObject))
                 {
-                    return false;
+                    Debug.LogError(
+                        $"<color={PrefabNameColor}>{prefabName}</color> has missing prefab <color={SubPrefabNameColor}>{gameObject.name}</color>");
+                    return true;
                 }
-            }
 
-            bool hasMissing = false;
-            foreach (Transform childT in gameObject.transform)
-            {
-                bool missing = FindMissingPrefabRecursive(childT.gameObject, prefabName, false);
-                hasMissing = missing ? true : hasMissing;
+                if (PrefabUtility.IsDisconnectedFromPrefabAsset(gameObject))
+                {
+                    Debug.LogError(
+                        $"<color={PrefabNameColor}>{prefabName}</color> has missing prefab <color={SubPrefabNameColor}>{gameObject.name}</color>");
+                    return true;
+                }
+
+                if (!isRoot)
+                {
+                    if (PrefabUtility.IsAnyPrefabInstanceRoot(gameObject))
+                    {
+                        return false;
+                    }
+
+                    GameObject root = PrefabUtility.GetNearestPrefabInstanceRoot(gameObject);
+                    if (root == gameObject)
+                    {
+                        return false;
+                    }
+                }
+
+                bool hasMissing = false;
+                foreach (Transform childT in gameObject.transform)
+                {
+                    bool missing = FindMissingPrefabRecursive(childT.gameObject, prefabName, false);
+                    hasMissing = missing ? true : hasMissing;
+                }
+                return hasMissing;
             }
-            return hasMissing;
         }
+
+        
     }
 }

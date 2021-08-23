@@ -20,6 +20,12 @@ namespace Asset.Checker
             MissingComponentCheck(new[] { path });
         }
 
+        [MenuItem("GameObject/Checker/查找所有缺失预制体的引用")]
+        private static void CheckMissingComponentInScene()
+        {
+            Debug.Log("TODO");
+        }
+
         [MenuItem("Assets/CheckSelectMissingComponent", priority = 2001)]
         private static void CheckMissingComponentSelectFolder()
         {
@@ -61,45 +67,45 @@ namespace Asset.Checker
                     msg += p + "        ";
                 Debug.Log(msg);
             }
-        }
-        //TODO:改为本地方法
-        private static bool FindMissingComponentRecursive(GameObject gameObject, GameObject prefab, string path)
-        {
-            var cmps = gameObject.GetComponents<Component>();
-            for (int i = 0; i < cmps.Length; i++)
+
+            static bool FindMissingComponentRecursive(GameObject gameObject, GameObject prefab, string path)
             {
-                if (null == cmps[i])
+                var cmps = gameObject.GetComponents<Component>();
+                for (int i = 0; i < cmps.Length; i++)
                 {
-                    Debug.LogError(
-                        $"<color={PrefabNameColor}>{GetRelativePath(gameObject, prefab)}</color> has missing components! path is: <color={PathColor}>{path}</color>"
-                    );
-                    return true;
+                    if (null == cmps[i])
+                    {
+                        Debug.LogError(
+                            $"<color={PrefabNameColor}>{GetRelativePath(gameObject, prefab)}</color> has missing components! path is: <color={PathColor}>{path}</color>"
+                        );
+                        return true;
+                    }
+                }
+
+                bool hasMissing = false;
+                foreach (Transform trans in gameObject.transform)
+                {
+                    bool missing = FindMissingComponentRecursive(trans.gameObject, prefab, path);
+                    hasMissing = missing ? true : hasMissing;
+                }
+                return hasMissing;
+
+                static string GetRelativePath(GameObject gameObject, GameObject prefab)
+                {
+                    if (null == gameObject.transform.parent)
+                    {
+                        return gameObject.name;
+                    }
+                    else if (gameObject == prefab)
+                    {
+                        return gameObject.name;
+                    }
+                    else
+                    {
+                        return GetRelativePath(gameObject.transform.parent.gameObject, prefab) + "/" + gameObject.name;
+                    }
                 }
             }
-
-            bool hasMissing = false;
-            foreach (Transform trans in gameObject.transform)
-            {
-                bool missing = FindMissingComponentRecursive(trans.gameObject, prefab, path);
-                hasMissing = missing ? true : hasMissing;
-            }
-            return hasMissing;
-        }
-        //TODO：改为本地方法
-        private static string GetRelativePath(GameObject gameObject, GameObject prefab)
-        {
-            if (null == gameObject.transform.parent)
-            {
-                return gameObject.name;
-            }
-            else if (gameObject == prefab)
-            {
-                return gameObject.name;
-            }
-            else
-            {
-                return GetRelativePath(gameObject.transform.parent.gameObject, prefab) + "/" + gameObject.name;
-            }
-        }
+        }    
     }
 }
