@@ -8,34 +8,31 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
-namespace Editor
+namespace EditorEx.SceneObjectBound
 {
-    namespace SceneObjectBound
+    [CustomEditor(typeof(BoxBoundsExample))]
+    public class BoundsExampleEditor : UnityEditor.Editor
     {
-        [CustomEditor(typeof(BoxBoundsExample))]
-        public class BoundsExampleEditor : UnityEditor.Editor
+        private BoxBoundsHandle m_BoxBoundsHandle = new BoxBoundsHandle();
+
+        protected virtual void OnSceneGUI()
         {
-            private BoxBoundsHandle m_BoxBoundsHandle = new BoxBoundsHandle();
+            BoxBoundsExample boundsExample = (BoxBoundsExample)target;
 
-            protected virtual void OnSceneGUI()
+            m_BoxBoundsHandle.center = boundsExample.transform.position + boundsExample.BoxBounds.center;
+            m_BoxBoundsHandle.size = boundsExample.BoxBounds.size;
+            m_BoxBoundsHandle.handleColor = Color.green;
+            m_BoxBoundsHandle.wireframeColor = Color.green;
+
+            EditorGUI.BeginChangeCheck();
+            m_BoxBoundsHandle.DrawHandle();
+            if (EditorGUI.EndChangeCheck())
             {
-                BoxBoundsExample boundsExample = (BoxBoundsExample)target;
-
-                m_BoxBoundsHandle.center = boundsExample.transform.position + boundsExample.BoxBounds.center;
-                m_BoxBoundsHandle.size = boundsExample.BoxBounds.size;
-                m_BoxBoundsHandle.handleColor = Color.green;
-                m_BoxBoundsHandle.wireframeColor = Color.green;
-
-                EditorGUI.BeginChangeCheck();
-                m_BoxBoundsHandle.DrawHandle();
-                if (EditorGUI.EndChangeCheck())
-                {
-                    Undo.RecordObject(boundsExample, "Change Bounds");
-                    Bounds newBounds = new Bounds();
-                    newBounds.center = m_BoxBoundsHandle.center;
-                    newBounds.size = m_BoxBoundsHandle.size;
-                    boundsExample.BoxBounds = newBounds;
-                }
+                Undo.RecordObject(boundsExample, "Change Bounds");
+                Bounds newBounds = new Bounds();
+                newBounds.center = m_BoxBoundsHandle.center;
+                newBounds.size = m_BoxBoundsHandle.size;
+                boundsExample.BoxBounds = newBounds;
             }
         }
     }

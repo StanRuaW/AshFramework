@@ -8,34 +8,31 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
-namespace Editor
+namespace EditorEx.SceneObjectBound
 {
-    namespace SceneObjectBound
+    [CustomEditor(typeof(CapsuleBoundsExample))]
+    public class CapsuleBoundsExampleEditor : UnityEditor.Editor
     {
-        [CustomEditor(typeof(CapsuleBoundsExample))]
-        public class CapsuleBoundsExampleEditor : UnityEditor.Editor
+        private CapsuleBoundsHandle m_CapsuleBoundsHandle = new CapsuleBoundsHandle();
+
+        protected virtual void OnSceneGUI()
         {
-            private CapsuleBoundsHandle m_CapsuleBoundsHandle = new CapsuleBoundsHandle();
+            CapsuleBoundsExample boundsExample = (CapsuleBoundsExample)target;
 
-            protected virtual void OnSceneGUI()
+            m_CapsuleBoundsHandle.center = boundsExample.transform.position + boundsExample.Center;
+            m_CapsuleBoundsHandle.radius = boundsExample.Radius;
+            m_CapsuleBoundsHandle.height = boundsExample.Height;
+            m_CapsuleBoundsHandle.handleColor = Color.green;
+            m_CapsuleBoundsHandle.wireframeColor = Color.green;
+
+            EditorGUI.BeginChangeCheck();
+            m_CapsuleBoundsHandle.DrawHandle();
+            if (EditorGUI.EndChangeCheck())
             {
-                CapsuleBoundsExample boundsExample = (CapsuleBoundsExample)target;
-
-                m_CapsuleBoundsHandle.center = boundsExample.transform.position + boundsExample.Center;
-                m_CapsuleBoundsHandle.radius = boundsExample.Radius;
-                m_CapsuleBoundsHandle.height = boundsExample.Height;
-                m_CapsuleBoundsHandle.handleColor = Color.green;
-                m_CapsuleBoundsHandle.wireframeColor = Color.green;
-
-                EditorGUI.BeginChangeCheck();
-                m_CapsuleBoundsHandle.DrawHandle();
-                if (EditorGUI.EndChangeCheck())
-                {
-                    Undo.RecordObject(boundsExample, "Change Bounds");
-                    boundsExample.Center = m_CapsuleBoundsHandle.center;
-                    boundsExample.Radius = m_CapsuleBoundsHandle.radius;
-                    boundsExample.Height = m_CapsuleBoundsHandle.height;
-                }
+                Undo.RecordObject(boundsExample, "Change Bounds");
+                boundsExample.Center = m_CapsuleBoundsHandle.center;
+                boundsExample.Radius = m_CapsuleBoundsHandle.radius;
+                boundsExample.Height = m_CapsuleBoundsHandle.height;
             }
         }
     }

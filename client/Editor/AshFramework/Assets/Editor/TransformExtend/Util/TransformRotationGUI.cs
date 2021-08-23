@@ -1,9 +1,12 @@
-﻿using System;
+﻿//引用自
+//作者：马三小伙儿 bilibili id:87410250
+//地址：https://github.com/XINCGer/UnityToolchainsTrick
+using System;
 using System.Reflection;
 using UnityEngine;
 using UnityEditor;
 
-namespace Beans.Unity.ETE
+namespace EditorEx.TransformExtend
 {
 	/// <summary>
 	/// Abstracts the reflection required to use the internal TransformRotationGUI class.

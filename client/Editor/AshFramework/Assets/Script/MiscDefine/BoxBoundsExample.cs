@@ -6,7 +6,10 @@
 
 using UnityEngine;
 
-public class BoxBoundsExample : MonoBehaviour
+namespace EditorEx.SceneObjectBound
 {
-    public Bounds BoxBounds = new Bounds(Vector3.zero, Vector3.one);
+    public class BoxBoundsExample : MonoBehaviour
+    {
+        public Bounds BoxBounds = new Bounds(Vector3.zero, Vector3.one);
+    }
 }

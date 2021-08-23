@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿//引用自
+//作者：马三小伙儿 bilibili id:87410250
+//地址：https://github.com/XINCGer/UnityToolchainsTrick
+using UnityEngine;
 using UnityEditor;
 
-namespace Beans.Unity.ETE
+namespace EditorEx.TransformExtend
 {
 	[CustomEditor (typeof (Transform)), CanEditMultipleObjects]
 	public class ExtendedTransformEditor : Editor

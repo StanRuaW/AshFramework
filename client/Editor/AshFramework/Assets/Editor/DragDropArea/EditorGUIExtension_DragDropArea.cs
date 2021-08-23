@@ -16,7 +16,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace CZToolKit.Core.Editors
+namespace EditorEx.DragDropArea
 {
     public static partial class EditorGUIExtension
     {

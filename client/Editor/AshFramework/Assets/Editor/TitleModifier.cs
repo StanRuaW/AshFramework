@@ -1,7 +1,7 @@
 ﻿//引用自
 //有修改
 //作者：马三小伙儿 bilibili id:87410250
-//地址：https://github.com/StanRuaW/UnityToolchainsTrick
+//地址：https://github.com/XINCGer/UnityToolchainsTrick
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ToolKits
+namespace EditorEx
 {
     public class TitleModifier
     {

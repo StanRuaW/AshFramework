@@ -5,9 +5,11 @@
 //------------------------------------------------------------
 
 using UnityEngine;
-
-public class SphereBoundsHandleExample : MonoBehaviour
+namespace EditorEx.SceneObjectBound
 {
-    public Vector3 Center;
-    public float Radius;
+    public class SphereBoundsHandleExample : MonoBehaviour
+    {
+        public Vector3 Center;
+        public float Radius;
+    }
 }

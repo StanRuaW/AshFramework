@@ -1,175 +1,173 @@
 ﻿//引用自
 //作者：马三小伙儿 bilibili id:87410250
-//地址：https://github.com/StanRuaW/UnityToolchainsTrick
+//地址：https://github.com/XINCGer/UnityToolchainsTrick
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEditor;
 
-namespace Editor
+namespace EditorEx.ParticlePreview
 {
-    namespace ParticlePreview
+    [CustomEditor(typeof(GameObject)), CanEditMultipleObjects]
+    public class ParticleSystemGameObjectEditor : OverrideEditor
     {
-        [CustomEditor(typeof(GameObject)), CanEditMultipleObjects]
-        public class ParticleSystemGameObjectEditor : OverrideEditor
+        private class Styles
         {
-            private class Styles
+            public GUIContent ps = new GUIContent("PS", "Show particle system preview");
+            public GUIStyle preButton = "preButton";
+        }
+
+        private bool m_ShowParticlePreview;
+
+        private int m_DefaultHasPreview;
+
+        private ParticleSystemPreview m_Preview;
+
+        private static Styles s_Styles;
+
+        private ParticleSystemPreview preview
+        {
+            get
             {
-                public GUIContent ps = new GUIContent("PS", "Show particle system preview");
-                public GUIStyle preButton = "preButton";
-            }
-
-            private bool m_ShowParticlePreview;
-
-            private int m_DefaultHasPreview;
-
-            private ParticleSystemPreview m_Preview;
-
-            private static Styles s_Styles;
-
-            private ParticleSystemPreview preview
-            {
-                get
+                if (m_Preview == null)
                 {
-                    if (m_Preview == null)
-                    {
-                        m_Preview = new ParticleSystemPreview();
-                        m_Preview.SetEditor(this);
-                        m_Preview.Initialize(targets);
-                    }
-
-                    return m_Preview;
-                }
-            }
-
-            protected override UnityEditor.Editor GetBaseEditor()
-            {
-                UnityEditor.Editor editor = null;
-                var baseType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameObjectInspector");
-                CreateCachedEditor(targets, baseType, ref editor);
-                return editor;
-            }
-
-            void OnEnable()
-            {
-                m_ShowParticlePreview = true;
-            }
-
-            void OnDisable()
-            {
-                preview.OnDestroy();
-                if (null != baseEditor && IsPreviewCacheNotNull)
-                {
-                    DestroyImmediate(baseEditor);
-                    baseEditor = null;
-                }
-            }
-
-            private bool HasParticleSystemPreview()
-            {
-                return preview.HasPreviewGUI();
-            }
-
-            private bool HasBasePreview()
-            {
-                if (m_DefaultHasPreview == 0)
-                {
-                    m_DefaultHasPreview = baseEditor.HasPreviewGUI() ? 1 : -1;
+                    m_Preview = new ParticleSystemPreview();
+                    m_Preview.SetEditor(this);
+                    m_Preview.Initialize(targets);
                 }
 
-                return m_DefaultHasPreview == 1;
+                return m_Preview;
             }
+        }
 
-            private bool IsShowParticleSystemPreview()
+        protected override UnityEditor.Editor GetBaseEditor()
+        {
+            UnityEditor.Editor editor = null;
+            var baseType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameObjectInspector");
+            CreateCachedEditor(targets, baseType, ref editor);
+            return editor;
+        }
+
+        void OnEnable()
+        {
+            m_ShowParticlePreview = true;
+        }
+
+        void OnDisable()
+        {
+            preview.OnDestroy();
+            if (null != baseEditor && IsPreviewCacheNotNull)
             {
-                return HasParticleSystemPreview() && m_ShowParticlePreview;
+                DestroyImmediate(baseEditor);
+                baseEditor = null;
             }
+        }
 
-            public override bool HasPreviewGUI()
+        private bool HasParticleSystemPreview()
+        {
+            return preview.HasPreviewGUI();
+        }
+
+        private bool HasBasePreview()
+        {
+            if (m_DefaultHasPreview == 0)
             {
-                return HasParticleSystemPreview() || HasBasePreview();
+                m_DefaultHasPreview = baseEditor.HasPreviewGUI() ? 1 : -1;
             }
 
-            public override GUIContent GetPreviewTitle()
+            return m_DefaultHasPreview == 1;
+        }
+
+        private bool IsShowParticleSystemPreview()
+        {
+            return HasParticleSystemPreview() && m_ShowParticlePreview;
+        }
+
+        public override bool HasPreviewGUI()
+        {
+            return HasParticleSystemPreview() || HasBasePreview();
+        }
+
+        public override GUIContent GetPreviewTitle()
+        {
+            return IsShowParticleSystemPreview() ? preview.GetPreviewTitle() : baseEditor.GetPreviewTitle();
+        }
+
+        public override void OnPreviewGUI(Rect r, GUIStyle background)
+        {
+            if (IsShowParticleSystemPreview())
             {
-                return IsShowParticleSystemPreview() ? preview.GetPreviewTitle() : baseEditor.GetPreviewTitle();
+                preview.OnPreviewGUI(r, background);
             }
-
-            public override void OnPreviewGUI(Rect r, GUIStyle background)
+            else
             {
-                if (IsShowParticleSystemPreview())
-                {
-                    preview.OnPreviewGUI(r, background);
-                }
-                else
-                {
-                    baseEditor.OnPreviewGUI(r, background);
-                }
+                baseEditor.OnPreviewGUI(r, background);
             }
+        }
 
-            public override void OnInteractivePreviewGUI(Rect r, GUIStyle background)
+        public override void OnInteractivePreviewGUI(Rect r, GUIStyle background)
+        {
+            if (IsShowParticleSystemPreview())
             {
-                if (IsShowParticleSystemPreview())
-                {
-                    preview.OnInteractivePreviewGUI(r, background);
-                }
-                else
-                {
-                    baseEditor.OnInteractivePreviewGUI(r, background);
-                }
+                preview.OnInteractivePreviewGUI(r, background);
             }
-
-            public override void OnPreviewSettings()
+            else
             {
-                if (s_Styles == null)
-                {
-                    s_Styles = new Styles();
-                }
-
-                if (HasBasePreview() && HasParticleSystemPreview())
-                {
-                    m_ShowParticlePreview = GUILayout.Toggle(m_ShowParticlePreview, s_Styles.ps, s_Styles.preButton);
-                }
-
-                if (IsShowParticleSystemPreview())
-                {
-                    preview.OnPreviewSettings();
-                }
-                else
-                {
-                    baseEditor.OnPreviewSettings();
-                }
+                baseEditor.OnInteractivePreviewGUI(r, background);
             }
+        }
 
-            public override string GetInfoString()
+        public override void OnPreviewSettings()
+        {
+            if (s_Styles == null)
             {
-                return IsShowParticleSystemPreview() ? preview.GetInfoString() : baseEditor.GetInfoString();
+                s_Styles = new Styles();
             }
 
-            public override void ReloadPreviewInstances()
+            if (HasBasePreview() && HasParticleSystemPreview())
             {
-                if (IsShowParticleSystemPreview())
-                {
-                    preview.ReloadPreviewInstances();
-                }
-                else
-                {
-                    baseEditor.ReloadPreviewInstances();
-                }
+                m_ShowParticlePreview = GUILayout.Toggle(m_ShowParticlePreview, s_Styles.ps, s_Styles.preButton);
             }
+
+            if (IsShowParticleSystemPreview())
+            {
+                preview.OnPreviewSettings();
+            }
+            else
+            {
+                baseEditor.OnPreviewSettings();
+            }
+        }
+
+        public override string GetInfoString()
+        {
+            return IsShowParticleSystemPreview() ? preview.GetInfoString() : baseEditor.GetInfoString();
+        }
+
+        public override void ReloadPreviewInstances()
+        {
+            if (IsShowParticleSystemPreview())
+            {
+                preview.ReloadPreviewInstances();
+            }
+            else
+            {
+                baseEditor.ReloadPreviewInstances();
+            }
+        }
 
 #if UNITY_2020_2_OR_NEWER
-            public void OnSceneDrag(SceneView sceneView, int index)
+        public void OnSceneDrag(SceneView sceneView, int index)
+        {
+            System.Type t = baseEditor.GetType();
+            MethodInfo onSceneDragMi = t.GetMethod("OnSceneDrag",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (onSceneDragMi != null)
             {
-                System.Type t = baseEditor.GetType();
-                MethodInfo onSceneDragMi = t.GetMethod("OnSceneDrag",
-                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-                if (onSceneDragMi != null)
-                {
-                    object[] param = new object[] { sceneView, index };
-                    onSceneDragMi.Invoke(baseEditor, param);
-                }
+                object[] param = new object[] { sceneView, index };
+                onSceneDragMi.Invoke(baseEditor, param);
             }
+        }
 #else
         // /// <summary>
         // /// 需要调用 GameObjectInspector 的场景拖曳，否则无法拖动物体到 Scene 视图
@@ -187,20 +185,19 @@ namespace Editor
         }
 #endif
 
-            private bool IsPreviewCacheNotNull
+        private bool IsPreviewCacheNotNull
+        {
+            get
             {
-                get
+                System.Type t = baseEditor.GetType();
+                var fieldInfo = t.GetField("m_PreviewCache", BindingFlags.NonPublic | BindingFlags.Instance);
+                if (null != fieldInfo)
                 {
-                    System.Type t = baseEditor.GetType();
-                    var fieldInfo = t.GetField("m_PreviewCache", BindingFlags.NonPublic | BindingFlags.Instance);
-                    if (null != fieldInfo)
-                    {
-                        var value = fieldInfo.GetValue(baseEditor);
-                        return null != value;
-                    }
-
-                    return false;
+                    var value = fieldInfo.GetValue(baseEditor);
+                    return null != value;
                 }
+
+                return false;
             }
         }
     }

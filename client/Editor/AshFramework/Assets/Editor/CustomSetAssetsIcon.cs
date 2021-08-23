@@ -9,7 +9,7 @@ using UnityEditor;
 using UnityEngine;
 //using UnityToolchinsTrick;
 
-namespace ToolKits.Example_53_CustomAssetsIcon
+namespace EditorEx
 {
     /// <summary>
     /// 目前两种做法
@@ -33,10 +33,11 @@ namespace ToolKits.Example_53_CustomAssetsIcon
         //    ProjectWindowUtil.CreateAsset(so2, "CreateExample_53_CustomSO_2.asset");
         //}
         
-        [MenuItem("Assets/Example_53/SetAssetsCustomIcon", false, 10)]
-        public static void SetCustomIcon()
-        {
-            EditorGUIExtension.SetIcon(Selection.activeObject, "console.erroricon");
-        }
+        //[MenuItem("Assets/自定义Icon", false, 10)]
+        //public static void SetCustomIcon()
+        //{
+        //    //TODO：会崩溃
+        //    EditorGUIExtension.SetIcon(Selection.activeObject, "console.erroricon");
+        //}
     }
 }

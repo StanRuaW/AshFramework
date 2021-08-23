@@ -18,7 +18,7 @@ using UnityEngine;
 
 using UnityObject = UnityEngine.Object;
 
-namespace CZToolKit.Core.Editors
+namespace EditorEx.DragDropArea
 {
     public static partial class EditorGUILayoutExtension
     {
