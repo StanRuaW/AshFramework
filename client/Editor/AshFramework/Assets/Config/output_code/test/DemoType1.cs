@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Bright.Serialization;
+using Plugin.Bright.Serialization;
 using System.Collections.Generic;
 
 
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 namespace cfg.test
 {
 
-public sealed partial class DemoType1 :  Bright.Config.BeanBase 
+public sealed partial class DemoType1 :  Plugin.Bright.Config.BeanBase 
 {
     public DemoType1(ByteBuf _buf) 
     {

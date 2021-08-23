@@ -7,7 +7,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Bright.Serialization
+namespace Plugin.Bright.Serialization
 {
 
     public enum EDeserializeError

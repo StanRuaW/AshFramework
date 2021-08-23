@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Bright.Serialization;
+using Plugin.Bright.Serialization;
 using System.Collections.Generic;
 
 
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 namespace cfg.test
 {
 
-public sealed partial class DemoType2 :  Bright.Config.BeanBase 
+public sealed partial class DemoType2 :  Plugin.Bright.Config.BeanBase 
 {
     public DemoType2(ByteBuf _buf) 
     {
@@ -165,16 +165,16 @@ public sealed partial class DemoType2 :  Bright.Config.BeanBase
         + "V3:" + V3 + ","
         + "V4:" + V4 + ","
         + "T1:" + T1 + ","
-        + "K1:" + Bright.Common.StringUtil.CollectionToString(K1) + ","
-        + "K2:" + Bright.Common.StringUtil.CollectionToString(K2) + ","
-        + "K3:" + Bright.Common.StringUtil.CollectionToString(K3) + ","
-        + "K4:" + Bright.Common.StringUtil.CollectionToString(K4) + ","
-        + "K5:" + Bright.Common.StringUtil.CollectionToString(K5) + ","
-        + "K6:" + Bright.Common.StringUtil.CollectionToString(K6) + ","
-        + "K7:" + Bright.Common.StringUtil.CollectionToString(K7) + ","
-        + "K8:" + Bright.Common.StringUtil.CollectionToString(K8) + ","
-        + "K9:" + Bright.Common.StringUtil.CollectionToString(K9) + ","
-        + "K15:" + Bright.Common.StringUtil.CollectionToString(K15) + ","
+        + "K1:" + Plugin.Bright.Common.StringUtil.CollectionToString(K1) + ","
+        + "K2:" + Plugin.Bright.Common.StringUtil.CollectionToString(K2) + ","
+        + "K3:" + Plugin.Bright.Common.StringUtil.CollectionToString(K3) + ","
+        + "K4:" + Plugin.Bright.Common.StringUtil.CollectionToString(K4) + ","
+        + "K5:" + Plugin.Bright.Common.StringUtil.CollectionToString(K5) + ","
+        + "K6:" + Plugin.Bright.Common.StringUtil.CollectionToString(K6) + ","
+        + "K7:" + Plugin.Bright.Common.StringUtil.CollectionToString(K7) + ","
+        + "K8:" + Plugin.Bright.Common.StringUtil.CollectionToString(K8) + ","
+        + "K9:" + Plugin.Bright.Common.StringUtil.CollectionToString(K9) + ","
+        + "K15:" + Plugin.Bright.Common.StringUtil.CollectionToString(K15) + ","
         + "}";
     }
     }

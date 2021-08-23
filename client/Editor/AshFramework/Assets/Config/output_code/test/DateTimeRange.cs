@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Bright.Serialization;
+using Plugin.Bright.Serialization;
 using System.Collections.Generic;
 
 
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 namespace cfg.test
 {
 
-public sealed partial class DateTimeRange :  Bright.Config.BeanBase 
+public sealed partial class DateTimeRange :  Plugin.Bright.Config.BeanBase 
 {
     public DateTimeRange(ByteBuf _buf) 
     {

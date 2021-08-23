@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Bright.Serialization;
+using Plugin.Bright.Serialization;
 
 
 namespace cfg

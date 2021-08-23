@@ -3,9 +3,9 @@
 //µÿ÷∑£∫https://github.com/focus-creative-games/luban
 
 
-using Bright.Serialization;
+using Plugin.Bright.Serialization;
 
-namespace Bright.Config
+namespace Plugin.Bright.Config
 {
     public abstract class BeanBase : ITypeId
     {

@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bright.Common
+namespace Plugin.Bright.Common
 {
     public static class StringUtil
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Bright.Serialization;
+using Plugin.Bright.Serialization;
 using System.Collections.Generic;
 
 
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 namespace cfg.test
 {
 
-public sealed partial class MultiRowRecord :  Bright.Config.BeanBase 
+public sealed partial class MultiRowRecord :  Plugin.Bright.Config.BeanBase 
 {
     public MultiRowRecord(ByteBuf _buf) 
     {
@@ -71,11 +71,11 @@ public sealed partial class MultiRowRecord :  Bright.Config.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "Name:" + Name + ","
-        + "OneRows:" + Bright.Common.StringUtil.CollectionToString(OneRows) + ","
-        + "MultiRows1:" + Bright.Common.StringUtil.CollectionToString(MultiRows1) + ","
-        + "MultiRows2:" + Bright.Common.StringUtil.CollectionToString(MultiRows2) + ","
-        + "MultiRows3:" + Bright.Common.StringUtil.CollectionToString(MultiRows3) + ","
-        + "MultiRows4:" + Bright.Common.StringUtil.CollectionToString(MultiRows4) + ","
+        + "OneRows:" + Plugin.Bright.Common.StringUtil.CollectionToString(OneRows) + ","
+        + "MultiRows1:" + Plugin.Bright.Common.StringUtil.CollectionToString(MultiRows1) + ","
+        + "MultiRows2:" + Plugin.Bright.Common.StringUtil.CollectionToString(MultiRows2) + ","
+        + "MultiRows3:" + Plugin.Bright.Common.StringUtil.CollectionToString(MultiRows3) + ","
+        + "MultiRows4:" + Plugin.Bright.Common.StringUtil.CollectionToString(MultiRows4) + ","
         + "}";
     }
     }
