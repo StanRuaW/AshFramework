@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Luban.Server": {
-      "commandName": "Project",
-      "commandLineArgs": "-p 8899"
-    }
-  }
-}
