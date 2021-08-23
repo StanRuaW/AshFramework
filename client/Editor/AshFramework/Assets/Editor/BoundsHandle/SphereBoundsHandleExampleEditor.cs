@@ -9,27 +9,33 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
-[CustomEditor(typeof(SphereBoundsHandleExample))]
-public class SphereBoundsHandleExampleEditor : UnityEditor.Editor
+namespace Editor
 {
-    private SphereBoundsHandle m_SphereBoundsHandle = new SphereBoundsHandle();
-    
-    protected virtual void OnSceneGUI()
+    namespace SceneObjectBound
     {
-        SphereBoundsHandleExample boundsExample = (SphereBoundsHandleExample)target;
-
-        m_SphereBoundsHandle.center = boundsExample.transform.position + boundsExample.Center;
-        m_SphereBoundsHandle.radius = boundsExample.Radius;
-        m_SphereBoundsHandle.handleColor = Color.green;
-        m_SphereBoundsHandle.wireframeColor = Color.green;
-        
-        EditorGUI.BeginChangeCheck();
-        m_SphereBoundsHandle.DrawHandle();
-        if (EditorGUI.EndChangeCheck())
+        [CustomEditor(typeof(SphereBoundsHandleExample))]
+        public class SphereBoundsHandleExampleEditor : UnityEditor.Editor
         {
-            Undo.RecordObject(boundsExample, "Change Bounds");
-            boundsExample.Center = m_SphereBoundsHandle.center;
-            boundsExample.Radius = m_SphereBoundsHandle.radius;
+            private SphereBoundsHandle m_SphereBoundsHandle = new SphereBoundsHandle();
+
+            protected virtual void OnSceneGUI()
+            {
+                SphereBoundsHandleExample boundsExample = (SphereBoundsHandleExample)target;
+
+                m_SphereBoundsHandle.center = boundsExample.transform.position + boundsExample.Center;
+                m_SphereBoundsHandle.radius = boundsExample.Radius;
+                m_SphereBoundsHandle.handleColor = Color.green;
+                m_SphereBoundsHandle.wireframeColor = Color.green;
+
+                EditorGUI.BeginChangeCheck();
+                m_SphereBoundsHandle.DrawHandle();
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(boundsExample, "Change Bounds");
+                    boundsExample.Center = m_SphereBoundsHandle.center;
+                    boundsExample.Radius = m_SphereBoundsHandle.radius;
+                }
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿//引用自
 //有修改
 //作者：马三小伙儿 bilibili id:87410250
-//地址：https://www.bilibili.com/video/BV1nh411U7iU
+//地址：https://github.com/StanRuaW/UnityToolchainsTrick
 using System;
 using System.Collections;
 using System.Collections.Generic;

@@ -1,6 +1,7 @@
 ﻿//引用自
+//有修改
 //作者：马三小伙儿 bilibili id:87410250
-//地址：https://www.bilibili.com/video/BV1nh411U7iU
+//地址：https://github.com/StanRuaW/UnityToolchainsTrick
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +19,7 @@ namespace Asset
             private const string ShaderPath = "Assets/GameAssets/Shaders";//TODO:路径配置
             private static string OutputPath = "Shader";
 
-            [MenuItem("Tools/变体统计", priority = 21)]
+            [MenuItem("Tools/Checker/变体统计")]
             public static void CalcAllShaderVariantCount()
             {
                 var asm = typeof(SceneView).Assembly;

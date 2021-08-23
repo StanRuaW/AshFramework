@@ -1,7 +1,7 @@
 ﻿//引用自
 //有修改
 //作者：马三小伙儿 bilibili id:87410250
-//地址：https://www.bilibili.com/video/BV1nh411U7iU
+//地址：https://github.com/StanRuaW/UnityToolchainsTrick
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -15,6 +15,13 @@ namespace Asset
         {
             private const string PrefabNameColor = "#00FF00";
             private const string SubPrefabNameColor = "#FF0000";
+
+            [MenuItem("Tools/Checker/查找所有缺失预制体的引用")]
+            private static void CheckMissingComponentAll()
+            {
+                string path = Util.PathUtil.GetAssetsRootPath();
+                CheckMissingPrefab(new[] { path });
+            }
 
             [MenuItem("Assets/CheckSelectMissingPrefab", priority = 2000)]
             private static void CheckMissingPrefabSelectFolder()
@@ -59,6 +66,7 @@ namespace Asset
                 }
             }
 
+            //TODO：本地方法
             static bool FindMissingPrefabRecursive(GameObject gameObject, string prefabName, bool isRoot)
             {
                 if (gameObject.name.Contains("Missing Prefab"))

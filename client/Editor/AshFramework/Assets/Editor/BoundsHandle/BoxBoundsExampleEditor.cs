@@ -8,29 +8,35 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
-[CustomEditor(typeof(BoxBoundsExample))]
-public class BoundsExampleEditor : UnityEditor.Editor
+namespace Editor
 {
-    private BoxBoundsHandle m_BoxBoundsHandle = new BoxBoundsHandle();
-    
-    protected virtual void OnSceneGUI()
+    namespace SceneObjectBound
     {
-        BoxBoundsExample boundsExample = (BoxBoundsExample)target;
-
-        m_BoxBoundsHandle.center = boundsExample.transform.position + boundsExample.BoxBounds.center;
-        m_BoxBoundsHandle.size = boundsExample.BoxBounds.size;
-        m_BoxBoundsHandle.handleColor = Color.green;
-        m_BoxBoundsHandle.wireframeColor = Color.green;
-        
-        EditorGUI.BeginChangeCheck();
-        m_BoxBoundsHandle.DrawHandle();
-        if (EditorGUI.EndChangeCheck())
+        [CustomEditor(typeof(BoxBoundsExample))]
+        public class BoundsExampleEditor : UnityEditor.Editor
         {
-            Undo.RecordObject(boundsExample, "Change Bounds");
-            Bounds newBounds = new Bounds();
-            newBounds.center = m_BoxBoundsHandle.center;
-            newBounds.size = m_BoxBoundsHandle.size;
-            boundsExample.BoxBounds = newBounds;
+            private BoxBoundsHandle m_BoxBoundsHandle = new BoxBoundsHandle();
+
+            protected virtual void OnSceneGUI()
+            {
+                BoxBoundsExample boundsExample = (BoxBoundsExample)target;
+
+                m_BoxBoundsHandle.center = boundsExample.transform.position + boundsExample.BoxBounds.center;
+                m_BoxBoundsHandle.size = boundsExample.BoxBounds.size;
+                m_BoxBoundsHandle.handleColor = Color.green;
+                m_BoxBoundsHandle.wireframeColor = Color.green;
+
+                EditorGUI.BeginChangeCheck();
+                m_BoxBoundsHandle.DrawHandle();
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(boundsExample, "Change Bounds");
+                    Bounds newBounds = new Bounds();
+                    newBounds.center = m_BoxBoundsHandle.center;
+                    newBounds.size = m_BoxBoundsHandle.size;
+                    boundsExample.BoxBounds = newBounds;
+                }
+            }
         }
     }
 }

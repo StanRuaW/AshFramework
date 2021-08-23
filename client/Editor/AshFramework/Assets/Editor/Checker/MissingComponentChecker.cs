@@ -1,6 +1,6 @@
 ﻿//引用
 //作者：马三小伙儿 bilibili id:87410250
-//地址：https://www.bilibili.com/video/BV1nh411U7iU
+//地址：https://github.com/StanRuaW/UnityToolchainsTrick
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -14,6 +14,13 @@ namespace Asset
         {
             private const string PrefabNameColor = "#00FF00";
             private const string PathColor = "#0000FF";
+
+            [MenuItem("Tools/Checker/查找所有缺失组件")]
+            private static void CheckMissingComponentAll()
+            {
+                string path = Util.PathUtil.GetAssetsRootPath();
+                MissingComponentCheck(new[] { path });
+            }
 
             [MenuItem("Assets/CheckSelectMissingComponent", priority = 2001)]
             private static void CheckMissingComponentSelectFolder()
@@ -57,7 +64,7 @@ namespace Asset
                     Debug.Log(msg);
                 }
             }
-
+            //TODO:改为本地方法
             private static bool FindMissingComponentRecursive(GameObject gameObject, GameObject prefab, string path)
             {
                 var cmps = gameObject.GetComponents<Component>();
@@ -80,7 +87,7 @@ namespace Asset
                 }
                 return hasMissing;
             }
-
+            //TODO：改为本地方法
             private static string GetRelativePath(GameObject gameObject, GameObject prefab)
             {
                 if (null == gameObject.transform.parent)

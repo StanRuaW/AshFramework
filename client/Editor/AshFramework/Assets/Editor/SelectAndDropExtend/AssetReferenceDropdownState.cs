@@ -1,18 +1,27 @@
+//引用自
+//有修改
+//作者：马三小伙儿 bilibili id:87410250
+//地址：https://github.com/StanRuaW/UnityToolchainsTrick
 using System;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 
-
-#if UNITY_2019_1_OR_NEWER
-public class AssetReferenceDropdownState : AdvancedDropdownState
+namespace Editor
 {
-    public SerializedProperty Property { get; }
-    public Type AssetType { get; }
-
-    public AssetReferenceDropdownState(Type assetType, SerializedProperty property) : base()
+    namespace SelectAndDropExtend
     {
-        this.Property = property;
-        this.AssetType = assetType;
+#if UNITY_2019_1_OR_NEWER
+        public class AssetReferenceDropdownState : AdvancedDropdownState
+        {
+            public SerializedProperty Property { get; }
+            public Type AssetType { get; }
+
+            public AssetReferenceDropdownState(Type assetType, SerializedProperty property) : base()
+            {
+                this.Property = property;
+                this.AssetType = assetType;
+            }
+        }
+#endif
     }
 }
-#endif
