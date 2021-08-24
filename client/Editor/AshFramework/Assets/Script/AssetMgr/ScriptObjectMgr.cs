@@ -7,14 +7,14 @@ namespace Asset
 {
     public class ScriptObjectMgr : SingletonMono<ScriptObjectMgr>
     {
-        public override void Initialize()
+        protected override void Init()
         {
-
+            base.Init();
         }
 
-        public override void Dispose()
+        protected override void Dispose()
         {
-
+            base.Dispose();
         }
 
         public static void SafeSaveScriptObject(UnityEngine.Object obj)

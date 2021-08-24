@@ -18,6 +18,11 @@ namespace Asset
             return Application.dataPath;
         }
 
+        public static string GetConfigPath()
+        {
+            return GetAssetsRootPath() + "/Config";
+        }
+
         public static string[] GetCurrSelectFolderPaths()
         {
             string[] paths = Selection.assetGUIDs;
