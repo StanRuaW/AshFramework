@@ -6,11 +6,11 @@ namespace EditorEx
 {
     public class BatGenrator
     {
-        private 
+
 
 
         void GenerateBat() { }
-        protected void AddLine(string) { }
+        protected void AddLine(string line) { }
         void RunBat() { }
     }
 
