@@ -42,7 +42,7 @@ namespace EditorEx
             public void RunCmd()
             {
                 //TODO:await
-                //var result = Cli.Wrap(commands).WithArguments(arguments).WithWorkingDirectory(workDictionary).ExecuteAsync();
+                var result = Cli.Wrap(commands).WithArguments(arguments).WithWorkingDirectory(workDictionary).ExecuteAsync();
                 //TODO:log结果，缓存log文件
             }
         }
