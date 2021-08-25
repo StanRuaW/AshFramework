@@ -6,9 +6,10 @@ using UnityEngine;
 public class test
 {
     [MenuItem("Help/test1")]
-    public static void TestCmd()
+    public static async void TestCmd()
     {
         var rua = EditorEx.CmdCaller.CreateCaller();
-        rua.AddCommand("").RunCmd();
+        var rue = await rua.AddCommand("").RunCmd();
+        Debug.Log(rue.StandardOutput);
     }
 }
