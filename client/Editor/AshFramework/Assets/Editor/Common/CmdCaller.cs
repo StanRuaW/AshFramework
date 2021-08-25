@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CliWrap;
 using CliWrap.Buffered;
+using System.IO;
 
 namespace EditorEx
 {
@@ -42,8 +43,15 @@ namespace EditorEx
             public void RunCmd()
             {
                 //TODO:await
-                var result = Cli.Wrap("Luban.Client.exe").WithWorkingDirectory("D:/AshFrame/luban/src/Luban.Client/bin/Debug/net5.0/").ExecuteBufferedAsync();
-                Debug.Log(result.GetAwaiter().GetResult().StandardOutput);
+                // CommandTask<BufferedCommandResult> result = Cli.Wrap("Luban.Client.exe").WithWorkingDirectory("../../../../../../luban/src/Luban.Client/bin/Debug/net5.0/").ExecuteBufferedAsync();
+                //Debug.Log(result.GetAwaiter().GetResult().StandardOutput);
+                //Debug.Log(result.GetAwaiter().GetResult().);
+
+                Debug.Log(Directory.GetCurrentDirectory());
+                CommandTask<BufferedCommandResult> result = Cli.Wrap("ipconfig").WithArguments("--a a").WithWorkingDirectory(Directory.GetCurrentDirectory()+"\\Assets").WithValidation(CommandResultValidation.None).ExecuteBufferedAsync();
+                Debug.Log(result.Task.Result.StandardOutput);
+
+
                 //TODO:log结果，缓存log文件
             }
         }
