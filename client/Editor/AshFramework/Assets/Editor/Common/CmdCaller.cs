@@ -47,11 +47,12 @@ namespace EditorEx
                 //Debug.Log(result.GetAwaiter().GetResult().StandardOutput);
                 //Debug.Log(result.GetAwaiter().GetResult().);
 
-                Debug.Log(Directory.GetCurrentDirectory());
-                CommandTask<BufferedCommandResult> result = Cli.Wrap("ipconfig").WithArguments("--a a").WithWorkingDirectory(Directory.GetCurrentDirectory()+"\\Assets").WithValidation(CommandResultValidation.None).ExecuteBufferedAsync();
+                //Debug.Log(Directory.GetCurrentDirectory());
+                //CommandTask<BufferedCommandResult> result = Cli.Wrap("Luban.Client.exe").WithArguments("--a a").WithWorkingDirectory("D:\\AshFramework\\luban\\src\\Luban.Client\\bin\\Debug\\net5.0").WithValidation(CommandResultValidation.None).ExecuteBufferedAsync();
+                //Debug.Log(result.Task.Result.StandardOutput);
+
+                CommandTask<BufferedCommandResult> result = Cli.Wrap("ipconfig").WithArguments("--a a").WithWorkingDirectory(Directory.GetCurrentDirectory()+"/Assets").WithValidation(CommandResultValidation.None).ExecuteBufferedAsync();
                 Debug.Log(result.Task.Result.StandardOutput);
-
-
                 //TODO:log结果，缓存log文件
             }
         }
