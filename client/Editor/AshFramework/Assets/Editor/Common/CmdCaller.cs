@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CliWrap;
@@ -10,20 +10,11 @@ namespace EditorEx
 {
     public class CMD
     {
-        private Command wrapper;
-        private string arguments = "";
-        private string workDictionary = "./";
-
-        private CMD(string command, string path)
-        {
-            wrapper = Cli.Wrap(path + @"\" + command);
-        }
-
         public static CMD GetNewCaller(string command, string path = "")
         {
             if (string.IsNullOrEmpty(path))
             {
-                //TODO:Ä¬ÈÏÄ¿Â¼ÓÃÕâ¸öÂğ,¶øÇÒ²»ÊÇunityµÄ½Ó¿Ú
+                //TODO:é»˜è®¤ç›®å½•ç”¨è¿™ä¸ªå—,è€Œä¸”ä¸æ˜¯unityçš„æ¥å£
                 path = Directory.GetCurrentDirectory();
             }
             return new CMD(command, path);
@@ -32,26 +23,36 @@ namespace EditorEx
         public CMD AddArgument(string argA, string argB)
         {
             //TODO:stringbuilder?
-            arguments += argA + " " + argB + " ";
+            _arguments += argA + " " + argB + " ";
             return this;
         }
 
         public CMD SetDictionary(string dic)
         {
-            //TODO:ÑéÖ¤µØÖ·ºÏ·¨ĞÔ
-            workDictionary = dic;
+            //TODO:éªŒè¯åœ°å€åˆæ³•æ€§
+            _workDictionary = dic;
             return this;
         }
 
-        public async Task<BufferedCommandResult> RunCmd()
+        public async Task<BufferedCommandResult> RunCmdAsync()
         {
-            return await wrapper.WithArguments(arguments).
-                                 WithWorkingDirectory(workDictionary).
+            return await _wrapper.WithArguments(_arguments).
+                                 WithWorkingDirectory(_workDictionary).
                                  WithValidation(CommandResultValidation.None).
                                  ExecuteBufferedAsync();
 
             //var result = await Cli.Wrap(@"D:\AshFramework\luban\src\Luban.Client\bin\Debug\net5.0\Luban.Client.exe").WithArguments(@"-h 127.0.0.1 " + "-j cfg " + "-- " + "-d Defines/__root__.xml " + "--input_data_dir Datas " + "--output_code_dir output_code " + "--output_data_dir output_data " + "-s server " + "--gen_types code_cs_bin,data_bin " + "--export_test_data").WithWorkingDirectory(@"D:\AshFramework\luban\config").WithValidation(CommandResultValidation.None).ExecuteBufferedAsync();
         }
+
+        private Command _wrapper;
+        private string _arguments = "";
+        private string _workDictionary = "./";
+
+        private CMD(string command, string path)
+        {
+            _wrapper = Cli.Wrap(path + @"\" + command);
+        }
+
     }
 
 }

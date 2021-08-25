@@ -19,7 +19,7 @@ public class test
             AddArgument("-s", "server").
             AddArgument("--gen_types", "code_cs_bin,data_bin").
             SetDictionary(@"D:\AshFramework\luban\config");
-        var rue = await rua.RunCmd();
+        var rue = await rua.RunCmdAsync();
         Debug.Log(rue.StandardOutput);
 
         //TODO:±£¥Êlog»’÷æ
