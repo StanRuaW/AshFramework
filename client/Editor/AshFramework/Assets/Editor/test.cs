@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class test
     [MenuItem("Help/test1")]
     public static async void TestCmd()
     {
-        var rua = EditorEx.CMD.GetNewCaller(@"D:\AshFramework\luban\src\Luban.Client\bin\Debug\net5.0", "Luban.Client.exe");
+        var rua = EditorEx.CMD.GetNewCaller( "Luban.Client.exe", @"D:\AshFrame\luban\src\Luban.Client\bin\Debug\net5.0");
         rua.AddArgument("-h", "127.0.0.1").
             AddArgument("-j", "cfg").
             AddArgument("--", "").
@@ -18,11 +18,11 @@ public class test
             AddArgument("--output_data_dir", "output_data").
             AddArgument("-s", "server").
             AddArgument("--gen_types", "code_cs_bin,data_bin").
-            SetDictionary(@"D:\AshFramework\luban\config");
+            SetDictionary(@"D:\AshFrame\luban\config");
         var rue = await rua.RunCmdAsync();
         Debug.Log(rue.StandardOutput);
 
-        //TODO:保存log日志
-        //TODO：自动打开和关闭server
+        //TODO:淇濆瓨log鏃ュ織
+        //TODO锛氳嚜鍔ㄦ墦寮�鍜屽叧闂璼erver
     }
 }

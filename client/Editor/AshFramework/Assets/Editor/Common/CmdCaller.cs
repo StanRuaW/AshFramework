@@ -35,7 +35,7 @@ namespace EditorEx
         }
 
         public async Task<BufferedCommandResult> RunCmdAsync()
-        {
+		{ 
             return await _wrapper.WithArguments(_arguments).
                                  WithWorkingDirectory(_workDictionary).
                                  WithValidation(CommandResultValidation.None).
