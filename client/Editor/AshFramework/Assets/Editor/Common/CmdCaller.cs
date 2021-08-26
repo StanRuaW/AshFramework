@@ -101,6 +101,7 @@ namespace EditorEx
 			{
 				arguments += a.Value + " ";
 			}
+			Debug.Log( arguments );
 
 			return await _wrapper.WithArguments(arguments).WithWorkingDirectory( _workDictionary ).
 								  WithValidation( CommandResultValidation.None ).

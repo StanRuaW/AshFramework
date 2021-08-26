@@ -35,8 +35,8 @@ namespace cfg
 		private static CMD InitDefaultCMD() {
 			_ip = "127.0.0.1";
 			_port = "8899";
-			_serviceTarget = "server";
-			_genTypes = "code_cs_bin";
+			_serviceTarget = "client";
+			_genTypes = "code_cs_bin,data_bin";
 			_exportTestData = false;
 
 			_cmd = CMD.GetNewCaller( _clientName, _clientPath );
