@@ -9,13 +9,13 @@ namespace cfg
 {
 	public class LubanGenMgr
 	{
-		private static readonly string _clientName = "Luban.Client.exe";
-		private static readonly string _clientPath = @"D:\AshFramework\luban\src\Luban.Client\bin\Debug\net5.0";
+		private static readonly string _clientName = "Luban.ClientServer.exe";
+		private static readonly string _clientPath = @"D:\AshFrame\luban\src\Luban.ClientServer\bin\Debug\net5.0";
 		private static readonly string _defineFile = @"Defines/__root__.xml";
 		private static readonly string _inputDataDir = @"Datas";
 		private static readonly string _outputCodeDir = @"..\..\client\Editor\AshFramework\Assets\Config\output_code";
 		private static readonly string _outputDataDir = @"..\..\client\Editor\AshFramework\Assets\Config\output_data";
-		private static readonly string _workingPath = @"D:\AshFramework\luban\config";
+		private static readonly string _workingPath = @"D:\AshFrame\luban\config";
 
 		private static string _ip;
 		private static string _port;
@@ -35,14 +35,14 @@ namespace cfg
 		private static CMD InitDefaultCMD() {
 			_ip = "127.0.0.1";
 			_port = "8899";
-			_serviceTarget = "client";
+			_serviceTarget = "all";
 			_genTypes = "code_cs_bin,data_bin";
 			_exportTestData = false;
 
 			_cmd = CMD.GetNewCaller( _clientName, _clientPath );
 
-			_cmd.AddArgument( "-h", _ip );
-			_cmd.AddArgument( "-p", _port );
+			//_cmd.AddArgument( "-h", _ip );
+			//_cmd.AddArgument( "-p", _port );
 			_cmd.AddArgument( "-j", "cfg" );
 			_cmd.AddArgument( "--", "" );
 			_cmd.AddArgument( "-d", _defineFile );

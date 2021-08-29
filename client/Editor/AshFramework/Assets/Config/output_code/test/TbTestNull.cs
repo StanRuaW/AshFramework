@@ -6,7 +6,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
 using Plugin.Bright.Serialization;
 using System.Collections.Generic;
 using System;
@@ -14,7 +13,7 @@ using System;
 namespace cfg.test
 {
    
-public sealed partial class TbTestNull
+public sealed class TbTestNull
 {
     private readonly Dictionary<int, test.TestNull> _dataMap;
     private readonly List<test.TestNull> _dataList;
@@ -40,6 +39,22 @@ public sealed partial class TbTestNull
     public test.TestNull Get(int key) => _dataMap[key];
     public test.TestNull this[int key] => _dataMap[key];
 
+    public void Resolve(Dictionary<string, object> _tables)
+    {
+        foreach(var v in _dataList)
+        {
+            v.Resolve(_tables);
+        }
+    }
+
+    public void TranslateText(System.Func<string, string, string> translator)
+    {
+        foreach(var v in _dataList)
+        {
+            v.TranslateText(translator);
+        }
+    }
+
     public void ForeachCfg(Func<test.TestNull, bool> callback)
     {
         foreach(var v in _dataList)
@@ -51,17 +66,6 @@ public sealed partial class TbTestNull
         }
     }
 
-    public void Resolve(Dictionary<string, object> _tables)
-    {
-        foreach(var v in _dataList)
-        {
-            v.Resolve(_tables);
-        }
-        OnResolveFinish(_tables);
-    }
-
-
-    partial void OnResolveFinish(Dictionary<string, object> _tables);
 }
 
 }
