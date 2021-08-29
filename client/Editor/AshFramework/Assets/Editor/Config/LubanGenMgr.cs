@@ -50,6 +50,7 @@ namespace cfg
 			_cmd.AddArgument( "--output_code_dir", _outputCodeDir );
 			_cmd.AddArgument( "--output_data_dir", _outputDataDir );
 			_cmd.AddArgument( "-s", _serviceTarget );
+			_cmd.AddArgument( "--use_unity_vector", "" );
 			_cmd.AddArgument( "--gen_types", _genTypes );
 			if (_exportTestData)
 				_cmd.AddArgument( "--export_test_data", "" );

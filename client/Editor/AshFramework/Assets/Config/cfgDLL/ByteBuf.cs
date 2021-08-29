@@ -1,7 +1,4 @@
-//引用
-//作者：focus-creative-games 
-//地址：https://github.com/focus-creative-games/luban
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -618,6 +615,16 @@ namespace Plugin.Bright.Serialization
             return (long)ReadUlong();
         }
 
+        public void WriteNumberAsLong(double x)
+        {
+            WriteLong((long)x);
+        }
+
+        public double ReadLongAsNumber()
+        {
+            return ReadLong();
+        }
+
         private void WriteUlong(ulong x)
         {
             // 0 111 1111
@@ -1055,7 +1062,7 @@ namespace Plugin.Bright.Serialization
             }
             else
             {
-                return "";
+                return string.Empty;
             }
         }
 
@@ -1544,5 +1551,18 @@ namespace Plugin.Bright.Serialization
         {
             _releaser?.Invoke(this);
         }
+
+#if SUPPORT_PUERTS_ARRAYBUF
+        // -- add for puerts
+        public Puerts.ArrayBuffer ReadArrayBuffer()
+        {
+            return new Puerts.ArrayBuffer(ReadBytes());
+        }
+
+        public void WriteArrayBuffer(Puerts.ArrayBuffer bytes)
+        {
+            WriteBytes(bytes.Bytes);
+        }
+#endif
     }
 }

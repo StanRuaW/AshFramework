@@ -1,7 +1,4 @@
-//引用
-//作者：focus-creative-games 
-//地址：https://github.com/focus-creative-games/luban
-using System.Collections.Generic;
+锘縰sing System.Collections.Generic;
 using System.Text;
 
 namespace Plugin.Bright.Common

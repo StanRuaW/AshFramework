@@ -29,7 +29,7 @@ public sealed partial class DefineFromExcel :  Plugin.Bright.Config.BeanBase
         X10 = _buf.ReadString();
         X13 = (test.ETestQuality)_buf.ReadInt();
         X14 = test.DemoDynamic.DeserializeDemoDynamic(_buf);
-        V2 = _buf.ReadVector2();
+        V2 = _buf.ReadUnityVector2();
         T1 = _buf.ReadInt();
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K1 = new int[n];for(var i = 0 ; i < n ; i++) { int _e;_e = _buf.ReadInt(); K1[i] = _e;}}
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K8 = new System.Collections.Generic.Dictionary<int, int>(n * 3 / 2);for(var i = 0 ; i < n ; i++) { int _k;  _k = _buf.ReadInt(); int _v;  _v = _buf.ReadInt();     K8.Add(_k, _v);}}
@@ -56,7 +56,7 @@ public sealed partial class DefineFromExcel :  Plugin.Bright.Config.BeanBase
     public string X10 { get; private set; }
     public test.ETestQuality X13 { get; private set; }
     public test.DemoDynamic X14 { get; private set; }
-    public System.Numerics.Vector2 V2 { get; private set; }
+    public UnityEngine.Vector2 V2 { get; private set; }
     public int T1 { get; private set; }
     public int[] K1 { get; private set; }
     public System.Collections.Generic.Dictionary<int, int> K8 { get; private set; }
