@@ -26,7 +26,6 @@ jobs:
         with:
           fetch-depth: 0
       - name: sync-gitee-mirror
-        uses: wangchucheng/git-repo-sync@v0.1.0
         with:
           # Target Repo URL
           target-url: https://gitee.com/wang-qinghui/AshFramework.git
