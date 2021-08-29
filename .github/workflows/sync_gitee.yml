@@ -26,10 +26,16 @@ jobs:
         with:
           fetch-depth: 0
       - name: sync-gitee-mirror
+        uses: Yikun/hub-mirror-action@master
         with:
-          # Target Repo URL
-          target-url: https://gitee.com/wang-qinghui/AshFramework.git
-          # Target Repo Username
-          target-username: ${{ secrets.GITTE_PRIVATE }}
-          # Target Token
-          target-token: ${{ secrets.GITEE_TOKEN }}
+          # 必选，需要同步的 Github 用户（源）
+          src: 'github/${{ github.repository_owner }}'
+          # 必选，需要同步到的 Gitee 用户（目的）
+          dst: 'gitee/wang-qinghui'
+          # 必选，Gitee公钥对应的私钥，https://gitee.com/profile/sshkeys
+          dst_key: ${{ secrets.GITTE_PRIVATE }}
+          # 必选，Gitee对应的用于创建仓库的token，https://gitee.com/profile/personal_access_tokens
+          dst_token:  ${{ secrets.GITEE_TOKEN }}
+          # 如果是组织，指定组织即可，默认为用户 user
+          # account_type: org
+
