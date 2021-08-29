@@ -16,7 +16,7 @@ namespace EditorEx
         [MenuItem("Assets/OpenRoot", false, 10000)]
         public static void OpenProjectRootPath()
         {
-            Asset.PathUtil.Execute(Application.dataPath + "/../../../../");
+			Asset.PathUtil.Execute(Application.dataPath + "/../../../../");
         }
 
         [MenuItem("Assets/OpenAssets", false, 10001)]
@@ -30,6 +30,14 @@ namespace EditorEx
         {
             Asset.PathUtil.Execute(Application.dataPath + "/../../../../" + "luban/");
         }
+		
+		[MenuItem("Assets/OpenDoc", false, 10002)]
+        public static void OpenDocFolder()
+        {
+            Asset.PathUtil.Execute(Application.dataPath + "/../../../../" + "doc/");
+        }
+
+
         ///// <summary>
         ///// 打开 Persistent Data Path 文件夹。
         ///// </summary>
