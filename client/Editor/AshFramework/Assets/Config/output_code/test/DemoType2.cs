@@ -6,7 +6,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
 using Plugin.Bright.Serialization;
 using System.Collections.Generic;
 
@@ -33,62 +32,17 @@ public sealed partial class DemoType2 :  Plugin.Bright.Config.BeanBase
         X12 = test.DemoType1.DeserializeDemoType1(_buf);
         X13 = (test.DemoEnum)_buf.ReadInt();
         X14 = test.DemoDynamic.DeserializeDemoDynamic(_buf);
-        S1 = _buf.ReadString();
-        V2 = _buf.ReadVector2();
-        V3 = _buf.ReadVector3();
-        V4 = _buf.ReadVector4();
+        S1_l10n_key = _buf.ReadString(); S1 = _buf.ReadString();
+        V2 = _buf.ReadUnityVector2();
+        V3 = _buf.ReadUnityVector3();
+        V4 = _buf.ReadUnityVector4();
         T1 = _buf.ReadInt();
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K1 = new int[n];for(var i = 0 ; i < n ; i++) { int _e;_e = _buf.ReadInt(); K1[i] = _e;}}
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K2 = new System.Collections.Generic.List<int>(n);for(var i = 0 ; i < n ; i++) { int _e;  _e = _buf.ReadInt(); K2.Add(_e);}}
-        {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K3 = new System.Collections.Generic.List<int>(n);for(var i = 0 ; i < n ; i++) { int _e;  _e = _buf.ReadInt(); K3.Add(_e);}}
-        {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K4 = new System.Collections.Generic.List<int>(n);for(var i = 0 ; i < n ; i++) { int _e;  _e = _buf.ReadInt(); K4.Add(_e);}}
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K5 = new System.Collections.Generic.HashSet<int>(/*n * 3 / 2*/);for(var i = 0 ; i < n ; i++) { int _e;  _e = _buf.ReadInt(); K5.Add(_e);}}
-        {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K6 = new System.Collections.Generic.HashSet<int>(/*n * 3 / 2*/);for(var i = 0 ; i < n ; i++) { int _e;  _e = _buf.ReadInt(); K6.Add(_e);}}
-        {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K7 = new System.Collections.Generic.HashSet<int>(/*n * 3 / 2*/);for(var i = 0 ; i < n ; i++) { int _e;  _e = _buf.ReadInt(); K7.Add(_e);}}
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K8 = new System.Collections.Generic.Dictionary<int, int>(n * 3 / 2);for(var i = 0 ; i < n ; i++) { int _k;  _k = _buf.ReadInt(); int _v;  _v = _buf.ReadInt();     K8.Add(_k, _v);}}
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K9 = new System.Collections.Generic.List<test.DemoE2>(n);for(var i = 0 ; i < n ; i++) { test.DemoE2 _e;  _e = test.DemoE2.DeserializeDemoE2(_buf); K9.Add(_e);}}
-        foreach(var _v in K9)
-        { 
-            K9_Index.Add(_v.Y1, _v);
-        }
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);K15 = new test.DemoDynamic[n];for(var i = 0 ; i < n ; i++) { test.DemoDynamic _e;_e = test.DemoDynamic.DeserializeDemoDynamic(_buf); K15[i] = _e;}}
-    }
-
-    public DemoType2(int x4, bool x1, byte x2, short x3, long x5, float x6, double x7, short x8_0, int x8, long x9, string x10, test.DemoType1 x12, test.DemoEnum x13, test.DemoDynamic x14, string s1, System.Numerics.Vector2 v2, System.Numerics.Vector3 v3, System.Numerics.Vector4 v4, int t1, int[] k1, System.Collections.Generic.List<int> k2, System.Collections.Generic.List<int> k3, System.Collections.Generic.List<int> k4, System.Collections.Generic.HashSet<int> k5, System.Collections.Generic.HashSet<int> k6, System.Collections.Generic.HashSet<int> k7, System.Collections.Generic.Dictionary<int, int> k8, System.Collections.Generic.List<test.DemoE2> k9, test.DemoDynamic[] k15 ) 
-    {
-        this.X4 = x4;
-        this.X1 = x1;
-        this.X2 = x2;
-        this.X3 = x3;
-        this.X5 = x5;
-        this.X6 = x6;
-        this.X7 = x7;
-        this.X80 = x8_0;
-        this.X8 = x8;
-        this.X9 = x9;
-        this.X10 = x10;
-        this.X12 = x12;
-        this.X13 = x13;
-        this.X14 = x14;
-        this.S1 = s1;
-        this.V2 = v2;
-        this.V3 = v3;
-        this.V4 = v4;
-        this.T1 = t1;
-        this.K1 = k1;
-        this.K2 = k2;
-        this.K3 = k3;
-        this.K4 = k4;
-        this.K5 = k5;
-        this.K6 = k6;
-        this.K7 = k7;
-        this.K8 = k8;
-        this.K9 = k9;
-        foreach(var _v in K9)
-        {
-            K9_Index.Add(_v.Y1, _v); 
-        }
-        this.K15 = k15;
     }
 
     public static DemoType2 DeserializeDemoType2(ByteBuf _buf)
@@ -96,37 +50,33 @@ public sealed partial class DemoType2 :  Plugin.Bright.Config.BeanBase
         return new test.DemoType2(_buf);
     }
 
-    public readonly int X4;
-    public readonly bool X1;
-    public readonly byte X2;
-    public readonly short X3;
-    public test.DemoType2 X3_Ref;
-    public readonly long X5;
-    public readonly float X6;
-    public readonly double X7;
-    public readonly short X80;
-    public readonly int X8;
-    public readonly long X9;
-    public readonly string X10;
-    public readonly test.DemoType1 X12;
-    public readonly test.DemoEnum X13;
-    public readonly test.DemoDynamic X14;
-    public readonly string S1;
-    public readonly System.Numerics.Vector2 V2;
-    public readonly System.Numerics.Vector3 V3;
-    public readonly System.Numerics.Vector4 V4;
-    public readonly int T1;
-    public readonly int[] K1;
-    public readonly System.Collections.Generic.List<int> K2;
-    public readonly System.Collections.Generic.List<int> K3;
-    public readonly System.Collections.Generic.List<int> K4;
-    public readonly System.Collections.Generic.HashSet<int> K5;
-    public readonly System.Collections.Generic.HashSet<int> K6;
-    public readonly System.Collections.Generic.HashSet<int> K7;
-    public readonly System.Collections.Generic.Dictionary<int, int> K8;
-    public readonly System.Collections.Generic.List<test.DemoE2> K9;
-    public readonly Dictionary<int?, test.DemoE2> K9_Index = new Dictionary<int?, test.DemoE2>();
-    public readonly test.DemoDynamic[] K15;
+    public int X4 { get; private set; }
+    public bool X1 { get; private set; }
+    public byte X2 { get; private set; }
+    public short X3 { get; private set; }
+    public test.DemoType2 X3_Ref { get; private set; }
+    public long X5 { get; private set; }
+    public float X6 { get; private set; }
+    public double X7 { get; private set; }
+    public short X80 { get; private set; }
+    public int X8 { get; private set; }
+    public long X9 { get; private set; }
+    public string X10 { get; private set; }
+    public test.DemoType1 X12 { get; private set; }
+    public test.DemoEnum X13 { get; private set; }
+    public test.DemoDynamic X14 { get; private set; }
+    public string S1 { get; private set; }
+    public string S1_l10n_key { get; }
+    public UnityEngine.Vector2 V2 { get; private set; }
+    public UnityEngine.Vector3 V3 { get; private set; }
+    public UnityEngine.Vector4 V4 { get; private set; }
+    public int T1 { get; private set; }
+    public int[] K1 { get; private set; }
+    public System.Collections.Generic.List<int> K2 { get; private set; }
+    public System.Collections.Generic.HashSet<int> K5 { get; private set; }
+    public System.Collections.Generic.Dictionary<int, int> K8 { get; private set; }
+    public System.Collections.Generic.List<test.DemoE2> K9 { get; private set; }
+    public test.DemoDynamic[] K15 { get; private set; }
 
     public const int ID = -367048295;
     public override int GetTypeId() => ID;
@@ -138,10 +88,16 @@ public sealed partial class DemoType2 :  Plugin.Bright.Config.BeanBase
         X14?.Resolve(_tables);
         foreach(var _e in K9) { _e?.Resolve(_tables); }
         foreach(var _e in K15) { _e?.Resolve(_tables); }
-        OnResolveFinish(_tables);
     }
 
-    partial void OnResolveFinish(Dictionary<string, object> _tables);
+    public  void TranslateText(System.Func<string, string, string> translator)
+    {
+        X12?.TranslateText(translator);
+        X14?.TranslateText(translator);
+        S1 = translator(S1_l10n_key, S1);
+        foreach(var _e in K9) { _e?.TranslateText(translator); }
+        foreach(var _e in K15) { _e?.TranslateText(translator); }
+    }
 
     public override string ToString()
     {
@@ -167,11 +123,7 @@ public sealed partial class DemoType2 :  Plugin.Bright.Config.BeanBase
         + "T1:" + T1 + ","
         + "K1:" + Plugin.Bright.Common.StringUtil.CollectionToString(K1) + ","
         + "K2:" + Plugin.Bright.Common.StringUtil.CollectionToString(K2) + ","
-        + "K3:" + Plugin.Bright.Common.StringUtil.CollectionToString(K3) + ","
-        + "K4:" + Plugin.Bright.Common.StringUtil.CollectionToString(K4) + ","
         + "K5:" + Plugin.Bright.Common.StringUtil.CollectionToString(K5) + ","
-        + "K6:" + Plugin.Bright.Common.StringUtil.CollectionToString(K6) + ","
-        + "K7:" + Plugin.Bright.Common.StringUtil.CollectionToString(K7) + ","
         + "K8:" + Plugin.Bright.Common.StringUtil.CollectionToString(K8) + ","
         + "K9:" + Plugin.Bright.Common.StringUtil.CollectionToString(K9) + ","
         + "K15:" + Plugin.Bright.Common.StringUtil.CollectionToString(K15) + ","
@@ -180,4 +132,3 @@ public sealed partial class DemoType2 :  Plugin.Bright.Config.BeanBase
     }
 
 }
-

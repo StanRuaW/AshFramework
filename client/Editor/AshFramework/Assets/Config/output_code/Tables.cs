@@ -6,7 +6,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
 using Plugin.Bright.Serialization;
 
 
@@ -15,45 +14,219 @@ namespace cfg
    
 public sealed class Tables
 {
+    public ai.TbBlackboard TbBlackboard {get; }
+    public ai.TbBehaviorTree TbBehaviorTree {get; }
+    public blueprint.TbClazz TbClazz {get; }
+    public bonus.TbDrop TbDrop {get; }
+    public common.TbGlobalConfig TbGlobalConfig {get; }
+    public common.TbDummy TbDummy {get; }
+    public error.TbErrorInfo TbErrorInfo {get; }
+    public error.TbCodeInfo TbCodeInfo {get; }
+    /// <summary>
+    /// 道具表
+    /// </summary>
+    public item.TbItem TbItem {get; }
+    public item.TbItemFunc TbItemFunc {get; }
+    public item.TbItemExtra TbItemExtra {get; }
+    public l10n.TbL10NDemo TbL10NDemo {get; }
+    public l10n.TbPatchDemo TbPatchDemo {get; }
+    public mail.TbSystemMail TbSystemMail {get; }
+    public mail.TbGlobalMail TbGlobalMail {get; }
+    public role.TbRoleLevelExpAttr TbRoleLevelExpAttr {get; }
+    public role.TbRoleLevelBonusCoefficient TbRoleLevelBonusCoefficient {get; }
+    public tag.TbTestTag TbTestTag {get; }
     public test.TbFullTypes TbFullTypes {get; }
     public test.TbSingleton TbSingleton {get; }
-    public test.TbDataFromJson TbDataFromJson {get; }
-    public test.TbDataFromXml TbDataFromXml {get; }
-    public test.TbDataFromLua TbDataFromLua {get; }
+    public test.TbDataFromMisc TbDataFromMisc {get; }
     public test.TbMultiRowRecord TbMultiRowRecord {get; }
+    public test.TbMultiRowTitle TbMultiRowTitle {get; }
     public test.TbTestNull TbTestNull {get; }
-    public test.TbTestTag TbTestTag {get; }
+    public test.TbDemoPrimitive TbDemoPrimitive {get; }
+    public test.TbTestString TbTestString {get; }
+    public test.TbDemoGroup TbDemoGroup {get; }
+    public test.TbDemoGroup_C TbDemoGroup_C {get; }
+    public test.TbDemoGroup_S TbDemoGroup_S {get; }
+    public test.TbDemoGroup_E TbDemoGroup_E {get; }
+    public test.TbTestGlobal TbTestGlobal {get; }
+    public test.TbDetectCsvEncoding TbDetectCsvEncoding {get; }
+    public test.TbDefineFromExcel TbDefineFromExcel {get; }
+    public test.TbDefineFromExcelOne TbDefineFromExcelOne {get; }
+    public test.TbTestJson2 TbTestJson2 {get; }
+    public test.TbTestIndex TbTestIndex {get; }
+    public test.TbTestMap TbTestMap {get; }
+    public test.TbDemoGroupDefineFromExcel TbDemoGroupDefineFromExcel {get; }
+    public test.TbDefineFromExcel2 TbDefineFromExcel2 {get; }
+    public test.TbTestExcelBean TbTestExcelBean {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
         var tables = new System.Collections.Generic.Dictionary<string, object>();
-        TbFullTypes = new test.TbFullTypes(loader("test.TbFullTypes.bin")); 
+        TbBlackboard = new ai.TbBlackboard(loader("ai_TbBlackboard.bin")); 
+        tables.Add("ai.TbBlackboard", TbBlackboard);
+        TbBehaviorTree = new ai.TbBehaviorTree(loader("ai_TbBehaviorTree.bin")); 
+        tables.Add("ai.TbBehaviorTree", TbBehaviorTree);
+        TbClazz = new blueprint.TbClazz(loader("blueprint_TbClazz.bin")); 
+        tables.Add("blueprint.TbClazz", TbClazz);
+        TbDrop = new bonus.TbDrop(loader("bonus_TbDrop.bin")); 
+        tables.Add("bonus.TbDrop", TbDrop);
+        TbGlobalConfig = new common.TbGlobalConfig(loader("common_TbGlobalConfig.bin")); 
+        tables.Add("common.TbGlobalConfig", TbGlobalConfig);
+        TbDummy = new common.TbDummy(loader("common_TbDummy.bin")); 
+        tables.Add("common.TbDummy", TbDummy);
+        TbErrorInfo = new error.TbErrorInfo(loader("error_TbErrorInfo.bin")); 
+        tables.Add("error.TbErrorInfo", TbErrorInfo);
+        TbCodeInfo = new error.TbCodeInfo(loader("error_TbCodeInfo.bin")); 
+        tables.Add("error.TbCodeInfo", TbCodeInfo);
+        TbItem = new item.TbItem(loader("item_TbItem.bin")); 
+        tables.Add("item.TbItem", TbItem);
+        TbItemFunc = new item.TbItemFunc(loader("item_TbItemFunc.bin")); 
+        tables.Add("item.TbItemFunc", TbItemFunc);
+        TbItemExtra = new item.TbItemExtra(loader("item_TbItemExtra.bin")); 
+        tables.Add("item.TbItemExtra", TbItemExtra);
+        TbL10NDemo = new l10n.TbL10NDemo(loader("l10n_TbL10NDemo.bin")); 
+        tables.Add("l10n.TbL10NDemo", TbL10NDemo);
+        TbPatchDemo = new l10n.TbPatchDemo(loader("l10n_TbPatchDemo.bin")); 
+        tables.Add("l10n.TbPatchDemo", TbPatchDemo);
+        TbSystemMail = new mail.TbSystemMail(loader("mail_TbSystemMail.bin")); 
+        tables.Add("mail.TbSystemMail", TbSystemMail);
+        TbGlobalMail = new mail.TbGlobalMail(loader("mail_TbGlobalMail.bin")); 
+        tables.Add("mail.TbGlobalMail", TbGlobalMail);
+        TbRoleLevelExpAttr = new role.TbRoleLevelExpAttr(loader("role_TbRoleLevelExpAttr.bin")); 
+        tables.Add("role.TbRoleLevelExpAttr", TbRoleLevelExpAttr);
+        TbRoleLevelBonusCoefficient = new role.TbRoleLevelBonusCoefficient(loader("role_TbRoleLevelBonusCoefficient.bin")); 
+        tables.Add("role.TbRoleLevelBonusCoefficient", TbRoleLevelBonusCoefficient);
+        TbTestTag = new tag.TbTestTag(loader("tag_TbTestTag.bin")); 
+        tables.Add("tag.TbTestTag", TbTestTag);
+        TbFullTypes = new test.TbFullTypes(loader("test_TbFullTypes.bin")); 
         tables.Add("test.TbFullTypes", TbFullTypes);
-        TbSingleton = new test.TbSingleton(loader("test.TbSingleton.bin")); 
+        TbSingleton = new test.TbSingleton(loader("test_TbSingleton.bin")); 
         tables.Add("test.TbSingleton", TbSingleton);
-        TbDataFromJson = new test.TbDataFromJson(loader("test.TbDataFromJson.bin")); 
-        tables.Add("test.TbDataFromJson", TbDataFromJson);
-        TbDataFromXml = new test.TbDataFromXml(loader("test.TbDataFromXml.bin")); 
-        tables.Add("test.TbDataFromXml", TbDataFromXml);
-        TbDataFromLua = new test.TbDataFromLua(loader("test.TbDataFromLua.bin")); 
-        tables.Add("test.TbDataFromLua", TbDataFromLua);
-        TbMultiRowRecord = new test.TbMultiRowRecord(loader("test.TbMultiRowRecord.bin")); 
+        TbDataFromMisc = new test.TbDataFromMisc(loader("test_TbDataFromMisc.bin")); 
+        tables.Add("test.TbDataFromMisc", TbDataFromMisc);
+        TbMultiRowRecord = new test.TbMultiRowRecord(loader("test_TbMultiRowRecord.bin")); 
         tables.Add("test.TbMultiRowRecord", TbMultiRowRecord);
-        TbTestNull = new test.TbTestNull(loader("test.TbTestNull.bin")); 
+        TbMultiRowTitle = new test.TbMultiRowTitle(loader("test_TbMultiRowTitle.bin")); 
+        tables.Add("test.TbMultiRowTitle", TbMultiRowTitle);
+        TbTestNull = new test.TbTestNull(loader("test_TbTestNull.bin")); 
         tables.Add("test.TbTestNull", TbTestNull);
-        TbTestTag = new test.TbTestTag(loader("test.TbTestTag.bin")); 
-        tables.Add("test.TbTestTag", TbTestTag);
+        TbDemoPrimitive = new test.TbDemoPrimitive(loader("test_TbDemoPrimitive.bin")); 
+        tables.Add("test.TbDemoPrimitive", TbDemoPrimitive);
+        TbTestString = new test.TbTestString(loader("test_TbTestString.bin")); 
+        tables.Add("test.TbTestString", TbTestString);
+        TbDemoGroup = new test.TbDemoGroup(loader("test_TbDemoGroup.bin")); 
+        tables.Add("test.TbDemoGroup", TbDemoGroup);
+        TbDemoGroup_C = new test.TbDemoGroup_C(loader("test_TbDemoGroup_C.bin")); 
+        tables.Add("test.TbDemoGroup_C", TbDemoGroup_C);
+        TbDemoGroup_S = new test.TbDemoGroup_S(loader("test_TbDemoGroup_S.bin")); 
+        tables.Add("test.TbDemoGroup_S", TbDemoGroup_S);
+        TbDemoGroup_E = new test.TbDemoGroup_E(loader("test_TbDemoGroup_E.bin")); 
+        tables.Add("test.TbDemoGroup_E", TbDemoGroup_E);
+        TbTestGlobal = new test.TbTestGlobal(loader("test_TbTestGlobal.bin")); 
+        tables.Add("test.TbTestGlobal", TbTestGlobal);
+        TbDetectCsvEncoding = new test.TbDetectCsvEncoding(loader("test_TbDetectCsvEncoding.bin")); 
+        tables.Add("test.TbDetectCsvEncoding", TbDetectCsvEncoding);
+        TbDefineFromExcel = new test.TbDefineFromExcel(loader("test_TbDefineFromExcel.bin")); 
+        tables.Add("test.TbDefineFromExcel", TbDefineFromExcel);
+        TbDefineFromExcelOne = new test.TbDefineFromExcelOne(loader("test_TbDefineFromExcelOne.bin")); 
+        tables.Add("test.TbDefineFromExcelOne", TbDefineFromExcelOne);
+        TbTestJson2 = new test.TbTestJson2(loader("test_TbTestJson2.bin")); 
+        tables.Add("test.TbTestJson2", TbTestJson2);
+        TbTestIndex = new test.TbTestIndex(loader("test_TbTestIndex.bin")); 
+        tables.Add("test.TbTestIndex", TbTestIndex);
+        TbTestMap = new test.TbTestMap(loader("test_TbTestMap.bin")); 
+        tables.Add("test.TbTestMap", TbTestMap);
+        TbDemoGroupDefineFromExcel = new test.TbDemoGroupDefineFromExcel(loader("test_TbDemoGroupDefineFromExcel.bin")); 
+        tables.Add("test.TbDemoGroupDefineFromExcel", TbDemoGroupDefineFromExcel);
+        TbDefineFromExcel2 = new test.TbDefineFromExcel2(loader("test_TbDefineFromExcel2.bin")); 
+        tables.Add("test.TbDefineFromExcel2", TbDefineFromExcel2);
+        TbTestExcelBean = new test.TbTestExcelBean(loader("test_TbTestExcelBean.bin")); 
+        tables.Add("test.TbTestExcelBean", TbTestExcelBean);
 
+        TbBlackboard.Resolve(tables); 
+        TbBehaviorTree.Resolve(tables); 
+        TbClazz.Resolve(tables); 
+        TbDrop.Resolve(tables); 
+        TbGlobalConfig.Resolve(tables); 
+        TbDummy.Resolve(tables); 
+        TbErrorInfo.Resolve(tables); 
+        TbCodeInfo.Resolve(tables); 
+        TbItem.Resolve(tables); 
+        TbItemFunc.Resolve(tables); 
+        TbItemExtra.Resolve(tables); 
+        TbL10NDemo.Resolve(tables); 
+        TbPatchDemo.Resolve(tables); 
+        TbSystemMail.Resolve(tables); 
+        TbGlobalMail.Resolve(tables); 
+        TbRoleLevelExpAttr.Resolve(tables); 
+        TbRoleLevelBonusCoefficient.Resolve(tables); 
+        TbTestTag.Resolve(tables); 
         TbFullTypes.Resolve(tables); 
         TbSingleton.Resolve(tables); 
-        TbDataFromJson.Resolve(tables); 
-        TbDataFromXml.Resolve(tables); 
-        TbDataFromLua.Resolve(tables); 
+        TbDataFromMisc.Resolve(tables); 
         TbMultiRowRecord.Resolve(tables); 
+        TbMultiRowTitle.Resolve(tables); 
         TbTestNull.Resolve(tables); 
-        TbTestTag.Resolve(tables); 
+        TbDemoPrimitive.Resolve(tables); 
+        TbTestString.Resolve(tables); 
+        TbDemoGroup.Resolve(tables); 
+        TbDemoGroup_C.Resolve(tables); 
+        TbDemoGroup_S.Resolve(tables); 
+        TbDemoGroup_E.Resolve(tables); 
+        TbTestGlobal.Resolve(tables); 
+        TbDetectCsvEncoding.Resolve(tables); 
+        TbDefineFromExcel.Resolve(tables); 
+        TbDefineFromExcelOne.Resolve(tables); 
+        TbTestJson2.Resolve(tables); 
+        TbTestIndex.Resolve(tables); 
+        TbTestMap.Resolve(tables); 
+        TbDemoGroupDefineFromExcel.Resolve(tables); 
+        TbDefineFromExcel2.Resolve(tables); 
+        TbTestExcelBean.Resolve(tables); 
+    }
+
+    public void TranslateText(System.Func<string, string, string> translator)
+    {
+        TbBlackboard.TranslateText(translator); 
+        TbBehaviorTree.TranslateText(translator); 
+        TbClazz.TranslateText(translator); 
+        TbDrop.TranslateText(translator); 
+        TbGlobalConfig.TranslateText(translator); 
+        TbDummy.TranslateText(translator); 
+        TbErrorInfo.TranslateText(translator); 
+        TbCodeInfo.TranslateText(translator); 
+        TbItem.TranslateText(translator); 
+        TbItemFunc.TranslateText(translator); 
+        TbItemExtra.TranslateText(translator); 
+        TbL10NDemo.TranslateText(translator); 
+        TbPatchDemo.TranslateText(translator); 
+        TbSystemMail.TranslateText(translator); 
+        TbGlobalMail.TranslateText(translator); 
+        TbRoleLevelExpAttr.TranslateText(translator); 
+        TbRoleLevelBonusCoefficient.TranslateText(translator); 
+        TbTestTag.TranslateText(translator); 
+        TbFullTypes.TranslateText(translator); 
+        TbSingleton.TranslateText(translator); 
+        TbDataFromMisc.TranslateText(translator); 
+        TbMultiRowRecord.TranslateText(translator); 
+        TbMultiRowTitle.TranslateText(translator); 
+        TbTestNull.TranslateText(translator); 
+        TbDemoPrimitive.TranslateText(translator); 
+        TbTestString.TranslateText(translator); 
+        TbDemoGroup.TranslateText(translator); 
+        TbDemoGroup_C.TranslateText(translator); 
+        TbDemoGroup_S.TranslateText(translator); 
+        TbDemoGroup_E.TranslateText(translator); 
+        TbTestGlobal.TranslateText(translator); 
+        TbDetectCsvEncoding.TranslateText(translator); 
+        TbDefineFromExcel.TranslateText(translator); 
+        TbDefineFromExcelOne.TranslateText(translator); 
+        TbTestJson2.TranslateText(translator); 
+        TbTestIndex.TranslateText(translator); 
+        TbTestMap.TranslateText(translator); 
+        TbDemoGroupDefineFromExcel.TranslateText(translator); 
+        TbDefineFromExcel2.TranslateText(translator); 
+        TbTestExcelBean.TranslateText(translator); 
     }
 }
 
 }
-
