@@ -7,7 +7,7 @@ public class TestLog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		Log.SetLogHelper(new AshFramework.Log.UnityLogHelper());
+		Log.SetLogHelper(new AshFramework.Logger.UnityLogHelper());
 
 		Log.L("hello log");
     }

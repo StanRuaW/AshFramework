@@ -9,7 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace AshFramework.Log
+namespace AshFramework.Logger
 {
 	public class UnityLogHelper :ILogHelper
 {

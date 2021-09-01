@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace AshFramework.Log
+namespace AshFramework.Logger
 {
         /// <summary>
         /// 游戏框架日志辅助器接口。
